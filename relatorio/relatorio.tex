@@ -25,7 +25,7 @@
 \usepackage{titlesec}
 \usepackage{hyperref}
 \usepackage{float}
-\usepackage[acronym,automake=immediate]{glossaries}
+\usepackage[nonumberlist,acronym,automake=immediate]{glossaries}
 
 \titleformat{\section}[runin]{\normalfont\large\bfseries}{}{0pt}{}
 \titleformat{\subsection}[runin]{\normalfont\normalsize\bfseries}{}{0pt}{}
@@ -54,39 +54,39 @@
 
 \newglossaryentry{flush}{
     name=flush,
-    description={Um jogo em poker em que um jogador possui cinco cartas do mesmo naipe.}
+    description={Um jogo em poker em que um jogador possui cinco cartas do mesmo naipe}
 }
 
 \newglossaryentry{arrep}{
     name=arrependimento,
-    description={O quanto um agente preferiria ter tomado uma decisão à decisão real dele.}
+    description={O quanto um agente preferiria ter tomado uma decisão à decisão real dele}
 }
 
 \newglossaryentry{esnash} {
     name={estratégia de Nash},
     description={Uma estratégia ótima em um equillíbrio de Nash. Desvios de uma estratégia de Nash, não podem melhorar a performance
-    de um agente.},
+    de um agente},
     plural={estratégias de Nash}
 }
 
 \newglossaryentry{estrategia} {
     name={estratégia},
     description={
-        Uma descrição de qual ação deve ser tomada em cada estado de um jogo.
+        Uma descrição de qual ação deve ser tomada em cada estado de um jogo
     }
 }
 
 \newglossaryentry{no} {
     name={nó},
     description={
-        Uma dos possíveis estados de jogo em uma árvore de decisão.
+        Uma dos possíveis estados de jogo em uma árvore de decisão
     }
 }
 
 \newglossaryentry{nof} {
     name={nó folha},
     description={
-        Um nó no fim de uma árvore de decisão, que não possui arestas de saída.
+        Um nó no fim de uma árvore de decisão, que não possui arestas de saída
     }
 }
 
@@ -95,37 +95,62 @@
     name={equidade},
     description={
         A sua probabilidade de ganhar uma mão. Uma de suas variações é a equidade de fold, que representa
-        a probabilidade do seu adversário foldar com a sua aposta.
+        a probabilidade do seu adversário foldar com a sua aposta
     }
 }
 
 \newglossaryentry{icm} {
     name={independent chip modelling},
     description={Conceito de que suas fichas no poker possuem valores diferentes dependendo do momento do jogo em
-    que você se encontra. Aplicado principalmente em torneios de poker.}
+    que você se encontra. Aplicado principalmente em torneios de poker}
 }
 
 \newglossaryentry{odds} {
     name={odds},
-    description={Quanto de equidade você precisa para, com a aposta atual na mesa, valer a pena você entrar na mão.}
+    description={Quanto de equidade você precisa para, com a aposta atual na mesa, valer a pena você entrar na mão}
 }
 
 \newglossaryentry{evalue} {
     name={valor esperado},
-    description={Valor esperado ao se fazer uma jogada. Leva em conta a equidade das cartas em mão e no jogo.}
+    description={Valor esperado ao se fazer uma jogada. Leva em conta a equidade das cartas em mão e no jogo}
 }
 
 \newglossaryentry{arvore} {
     name={árvore de decisões},
     description={Representação de um jogo como uma árvore em que cada nó é um estado do jogo, e cada aresta
-    representa uma decisão que pode ser tomada pelos jogadores.}
+    representa uma decisão que pode ser tomada pelos jogadores}
 }
 
 \newglossaryentry{valor} {
     name={valor},
-    description={O valor de um nó na árvore de jogadas.}
+    description={O valor de um nó na árvore de jogadas}
 }
 
+\newglossaryentry{nlh} {
+    name={no limit holdem},
+    description={
+        Variante do poker em que dois ou mais jogadores jogam com duas cartas na mão
+        e cinco cartas na mesa, e que os jogadores não possuem limites de aposta
+    }
+}
+
+\newglossaryentry{lh} {
+    name={limit holdem},
+    description={
+        Variante do poker em que dois ou mais jogadores jogam com duas cartas na mão
+        e cinco cartas na mesa, e que os jogadores possuem limites de aposta determinados
+        pelo tamanho do \emph{pot} no momento
+    }
+}
+
+\newglossaryentry{pot} {
+    name={pot},
+    description={
+        Quantidade de apostas que está em jogo até o momento no poker
+    }
+}
+
+\glsaddall
 %%%%%%%%%%%%%%%%%%%%%%%%%% Page Setting %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \geometry{a4paper}
 \pagenumbering{roman}
@@ -152,7 +177,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Title & Author %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\title{Inteligência Artificial de Poker\\Pluribus}
+\title{Inteligência Artificial de Poker No Limit Holdem\\Pluribus}
 \author{Pedro Tavares de Carvalho}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -173,12 +198,12 @@
         O poker é um dos jogos mais jogados do mundo. Com regras simples de se entender, porém
         difíceis de se dominar, o poker atende jogadores casuais e aficionados da mesma forma.
 
-        Apesar disso, a revolução das inteligências artificiais, que inclui damas~\cite{5392560}, xadrez~\cite{CAMPBELL200257}
-        e mais recentemente GO~\cite{Silver2016}, atingiu diversos outros jogos antes do mesmo. Muito disso se deve à
+        Apesar de sua popularidade, a revolução das inteligências artificiais, que inclui damas~\cite{5392560}, xadrez~\cite{CAMPBELL200257}
+        e mais recentemente GO~\cite{Silver2016}, atingiu diversos outros jogos antes do poker. Muito disso se deve à
         dificuldade de se modelar uma \gls{estrategia} ótima em poker.
 
         A história da inteligência artifical no poker é longa, incluindo diversas \glspl{estrategia}, dentre elas algoritmos genéticos~\cite{4219032} e
-        aprendizado profundo~\cite{DBLP:journals/corr/MoravcikSBLMBDW17}. Uma versão mais simplificada do poker, onde os jogadores possuem
+        aprendizado profundo~\cite{DBLP:journals/corr/MoravcikSBLMBDW17}. Uma versão mais simplificada do poker, o Limit Texas Holdem, onde os jogadores possuem
         limites em quanto eles podem apostar, já foi fechada matematicamente~\cite{bowling2015heads}.
 
         Iremos explorar no que o Pluribus difere das \glspl{estrategia} empregadas até o momento, e o motivo dessas \glspl{estrategia} serem menos eficientes
@@ -190,7 +215,6 @@
     \section{Modelagem do Poker em Teoria de Jogos } % (fold)
     \label{sec:Modelagem do Poker em Teoria de Jogos }
         O poker pode ser modelado em teoria de jogos como um jogo:
-
 
         \begin{description}
             \item[De informação incompleta] Os agentes do jogo não possuem acesso a quais cartas os seus adversários estão na mão, ou seja,
@@ -214,7 +238,8 @@
             tentando atingir um Equilíbrio de Nash~\cite{nash1950equilibrium}.
 
             Em poker sem limites, não existe uma \gls{esnash} fechada, o que é feito são tentativas de aproximação dessa \gls{estrategia},
-            no caso do poker humano, com conceitos como \gls{evalue}, \gls{icm}~\cite{gilbert2009independent}, \gls{equidade},
+            no caso do poker humano, com conceitos como \gls{evalue},
+            \emph{\gls{icm}}~\cite{gilbert2009independent}, \gls{equidade},
             \gls{odds}, entre outros
             que ajudam a aproximar a melhor ação em cada momento. Já em inteligências artificiais, a técnica mais usada é a de \acrfull{crm}, que atualiza a \gls{arvore} tentando diminuir a quantidade de decisões erradas.
 
@@ -267,7 +292,7 @@
         Essa técnica consiste na simulação de jogos da \acrshort{ia} contra si mesma, e da revisão das decisões tomadas no jogo completo a fim de minimizar o "\gls{arrep}"
         do agente, ou seja, aumentando a probabilidade de decisões boas e diminuindo a de decisões ruins.
 
-        Diferente da CRM normal, em que a cada geração da \gls{estrategia} a \gls{arvore} completa é atualizada, o \acrshort{mccrm} simula somente um jogo\footnote{Um jogo é uma descida
+        Diferente da \acrshort{crm} normal, em que a cada geração da \gls{estrategia} a \gls{arvore} completa é atualizada, o \acrshort{mccrm} simula somente um jogo\footnote{Um jogo é uma descida
         completa na \gls{arvore}, até se chegar em um \gls{nof}.} de todos os possíveis, e atualiza as decisões que são geradas nesse jogo somente.
 
     % section Minização de arrependimento contrafactual de Monte Carlo (end)
